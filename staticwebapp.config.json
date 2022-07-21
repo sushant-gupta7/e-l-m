@@ -1,5 +1,19 @@
 {
     "navigationFallback": {
         "rewrite": "/index.html"
-    }
+    },
+    "routes": [
+        {
+          "route": "/home",
+          "allowedRoles": ["authenticated"]
+        },
+        {
+          "route": "/details/:id",
+          "allowedRoles": ["authenticated"]
+        },
+        {
+         "route": "/api/*",
+         "allowedRoles": ["authenticated"]
+        }
+      ]
 }

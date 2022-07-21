@@ -10,6 +10,13 @@
     "test": "playwright test"
   },
   "dependencies": {
+    "@azure/cosmos": "^3.16.3",
+    "@azure/data-tables": "^13.1.2",
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-brands-svg-icons": "^6.1.1",
+    "@fortawesome/free-regular-svg-icons": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/vue-fontawesome": "^3.0.1",
     "@popperjs/core": "^2.11.5",
     "axios": "^0.27.2",
     "bootstrap": "^5.1.3",
@@ -41,7 +48,8 @@
     },
     "rules": {
       "vue/multi-word-component-names": "off",
-      "vue/no-multiple-template-root": "off"
+      "vue/no-multiple-template-root": "off",
+      "vue/no-v-for-template-key-on-child": "off"
     }
   },
   "browserslist": [

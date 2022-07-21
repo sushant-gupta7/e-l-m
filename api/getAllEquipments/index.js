@@ -1,3 +1,4 @@
+
 let data= [
     {id: 1, name: 'Stanley 1600kg Trolley Jack', description: 'The Stanley hydraulic garage jack range is designed for all-round performance. The products include a range of features to make work easier, such as a swivel saddle for locating, easy to carry, a rubber handle cover to prevent vehicle damage.'},
     {id: 2, name: 'Ozito OBD2 Automotive Scan Tool', description: 'This Automotive Scan Tool is ideal for troubleshooting most OBD2 compliant vehicles from 1996 onwards. Use this compact tool to read and clear Diagnostic Trouble Codes (DTC), turn off check engine light and view the vehicle information.'},
@@ -11,7 +12,7 @@ let data= [
     {id: 10, name: 'Sidchrome 4000kg Hydraulic Bottle Jack', description: 'The heavy-duty Sidchrome bottle jack range is designed for all-round performance. The products include a range of features, such as a grooved steel lifting cap, polished precision fit ram, ribbed cast iron base for added strength and a patented bypass device to prevent damage from over-pumping.'},
     {id: 11, name: 'Supatool 4 Way Wheel Brace', description: 'The Supatool 4 way wheel brace allows for the loosening and tightening of the most common metric and imperial wheel nut sizes. Made from heavy duty forged steel and finished for corrosion protection.'},
     {id: 12, name: 'Stanley Harmonic Balance Puller', description: 'The New Stanley Automotive Range. Automotive Tools are a valuable addition to any tool range. Designed to allow for easy and simple removal of harmonic balancers, gear pulleys, steering wheels, and crank shaft pulleys.'}
-]
+];
 
 module.exports = async function (context, req) {
     let newData = data;

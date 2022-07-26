@@ -1,72 +1,77 @@
 <template>
-<div class="modal-overlay">
-    <div class="modal">
-      <h6>Saved!</h6>
-      <p>Your Details have been saved Successfully</p>
-      <button>Go Home</button>
-    </div>
-    <div class="close">
-        hvjjhvhvjhhvhjv
-      <!-- <img class="close-img"  /> -->
-    </div>
-  </div>
-    <!-- <div class="modal-overlay modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true" @click="$emit('close')">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="$emit('close')">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                        @click="$emit('close')">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+    <div>
+        <transition name="modal">
+            <div class="modal-mask">
+                <div class="modal-wrapper bg-light">
+                    <div class="modal-container">
+                        <div class="modal-header d-flex justify-content-center">
+                            <slot name="header">
+                                <h3>
+                                    <small class="text-muted">Add Equipments</small>
+                                </h3>
+                            </slot>
+                        </div>
+                        <div class="modal-body">
+                            <slot name="body">
+                                <form>
+                                    <div class="row">
+                                        <div class="col form-group">
+                                            <label for="exampleInputEmail1"><b>Id</b></label>
+                                            <input type="number" class="form-control" placeholder="Enter Id" v-model="id">
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col form-group">
+                                            <label for="exampleInputPassword1"><b>Name</b></label>
+                                            <input type="text" class="form-control" placeholder="Enter Name" v-model="name">
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col form-group">
+                                            <label for="exampleInputPassword1"><b>Description</b></label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                rows="3" v-model="description"></textarea>
+                                        </div>
+                                    </div>
+                                </form>
+                            </slot>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <slot name="footer">
+                                <button class="btn btn-sm btn-primary" v-on:click="saveEquipmentData()">
+                                    Save Details
+                                </button>
+                            </slot>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div> -->
-    <!-- <div class="modal-overlay" >
-        <div class=" modal fade-in modal-active">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" @click="$emit('close')" class="close"><span>&times;</span></button>
-                        <h4 class="modal-title">
-                            assdsadasds
-                        </h4>
-                    </div>
-                    <div class="modal-body">
-                        <slot></slot>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" @click="$emit('close')">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div> -->
+        </transition>
+    </div>
 </template>
 <script>
 export default {
-    name: "addEquipmentModal",
-    props: {
-        showModal: {
-            type: Boolean,
-            default: false
-        },
-    }
+    data() {
+        return {
+            id: null,
+            name: '',
+            description: '',
+        };
+    },
+
+  methods: {
+    saveEquipmentData() {
+        console.log(this.id, this.name, this.description);
+        this.$emit('close');
+    },
+  }
 }
 </script>
 
 <style scoped>
-.modal-overlay {
+.modal-mask {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -77,9 +82,8 @@ export default {
     background-color: #000000da;
 }
 
-.modal {
+.modal-wrapper {
     text-align: center;
-    background-color: white;
     height: 500px;
     width: 500px;
     margin-top: 10%;
@@ -109,15 +113,5 @@ h6 {
 p {
     font-size: 16px;
     margin: 20px 0;
-}
-
-button {
-    background-color: #ac003e;
-    width: 150px;
-    height: 40px;
-    color: white;
-    font-size: 14px;
-    border-radius: 16px;
-    margin-top: 50px;
 }
 </style>

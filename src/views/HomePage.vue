@@ -6,7 +6,8 @@
         <input type="text" class="form-control" v-model="searchData" placeholder="Search Equipments..." />
       </div>
       <div class="col-md-2">
-        <button type="button" class="btn btn-md btn-outline-info"  @click="showModal = true">+ Add</button>
+        <button type="button" class="btn btn-md btn-outline-info"  v-on:click="showModal = true">+ Add</button>
+        <!-- <button type="button" class="btn btn-md btn-outline-info"  v-on:click="showModal = true">+ Add</button> -->
       </div>
     </div>
     <br>
@@ -37,7 +38,7 @@
         </tr>
       </tbody>
     </table>
-    <addEquipmentModal v-show="showModal" @click="showModal = false" />
+    <addEquipmentModal v-if="showModal" @close="showModal = false" />
   </div>
 </template>
 

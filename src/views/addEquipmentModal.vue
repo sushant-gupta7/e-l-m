@@ -6,9 +6,11 @@
                     <div class="modal-container">
                         <div class="modal-header d-flex justify-content-center">
                             <slot name="header">
-                                <h3>
-                                    <small class="text-muted">Add Equipments</small>
-                                </h3>
+                                <h5 class="modal-title">Equipment Details</h5>
+                                <button type="button" class="btn btn-sm" data-dismiss="modal" aria-label="Close"
+                                    v-on:click="clearData()">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </slot>
                         </div>
                         <div class="modal-body">
@@ -17,22 +19,24 @@
                                     <div class="row">
                                         <div class="col form-group">
                                             <label for="exampleInputEmail1"><b>Id</b></label>
-                                            <input type="number" class="form-control" placeholder="Enter Id" v-model="id">
+                                            <input type="text" class="form-control" placeholder="Enter Id"
+                                                v-model="equipmentId">
                                         </div>
                                     </div>
                                     <br>
                                     <div class="row">
                                         <div class="col form-group">
                                             <label for="exampleInputPassword1"><b>Name</b></label>
-                                            <input type="text" class="form-control" placeholder="Enter Name" v-model="name">
+                                            <input type="text" class="form-control" placeholder="Enter Name"
+                                                v-model="name">
                                         </div>
                                     </div>
                                     <br>
                                     <div class="row">
                                         <div class="col form-group">
                                             <label for="exampleInputPassword1"><b>Description</b></label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1"
-                                                rows="3" v-model="description"></textarea>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                                v-model="description"></textarea>
                                         </div>
                                     </div>
                                 </form>
@@ -52,21 +56,36 @@
     </div>
 </template>
 <script>
+import axios from 'axios';
 export default {
     data() {
         return {
-            id: null,
+            equipmentId: '',
             name: '',
             description: '',
         };
     },
 
-  methods: {
-    saveEquipmentData() {
-        console.log(this.id, this.name, this.description);
-        this.$emit('close');
-    },
-  }
+    methods: {
+        async saveEquipmentData() {
+            const value = {
+                equipmentId: this.equipmentId,
+                name: this.name,
+                description: this.description
+            };
+            let response = await axios.post('http://localhost:7071/api/addEquipments', { value: value });
+            console.log(response);
+            this.$emit('close');
+            this.clearData();
+            //   this.equipments = response.data.data;
+        },
+        async clearData() {
+            this.equipmentId = '';
+            this.name = '';
+            this.description = '';
+            this.$emit('close');
+        },
+    }
 }
 </script>
 

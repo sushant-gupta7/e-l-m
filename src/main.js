@@ -15,8 +15,11 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 /* import specific icons */
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 
+import JsonCSV from 'vue-json-csv'
 /* add icons to the library */
 library.add(faUserSecret)
 
-createApp(App).component('font-awesome-icon', FontAwesomeIcon).use(router).mount('#app')
+
+
+createApp(App).component('font-awesome-icon', FontAwesomeIcon).component('downloadCsv', JsonCSV).use(router).mount('#app')
 

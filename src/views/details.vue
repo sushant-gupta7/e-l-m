@@ -18,7 +18,7 @@
       <div class="card mb-4">
         <div class="card-body">
           <h4 class="text-primary text-center">Equipment Id</h4>
-          <h5 class="text-center">{{selectedEquipment?.id}}</h5>
+          <h5 class="text-center">{{selectedEquipment?.equipmentId}}</h5>
         </div>
       </div>
     </div>

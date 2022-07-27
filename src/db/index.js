@@ -1,12 +1,18 @@
-const {mongoClient} = require('mongodb');
-const {v4:uuidv4} = require('uuid');
+const CosmosClient = require("@azure/cosmos").CosmosClient;
 
-const url ="mongodb://sushant-gupta:RsGeqSsPnGOq1DorC4AFIYX1gkLSjIloEGD4pZ8rmooQ8ngvPM19Anv4YTYZqQC2eikT2MoiliXoLbDiUQTceA==@sushant-gupta.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@sushant-gupta@"
+const endpoint = "https://elm.documents.azure.com:443/";
 
-const client = new mongoClient(url);
+const key = "kgJwxO4HZZSpXZlKr8yS5f4MgnExjZHWRV2mjFFptf342SlHhhQPjH4X0nG06ksa47QEwTBHkB3gAhDkunyp2Q==";
 
-module.exports = async function(context, req) {
-    await client.connect();
-    const database = client.db('equipments');
-    const collection = database.collection("")
-}
+const client = new CosmosClient({ endpoint, key });
+
+const databaseId = "equipments"
+const containerId = "equipments"
+
+const database = client.database(databaseId);
+const container = database.container(containerId);
+
+exports.data = {
+    database: database,
+    container: container,
+};

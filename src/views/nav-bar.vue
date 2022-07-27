@@ -13,7 +13,7 @@
         <div class="card-body">
           <div class="row">
             <div class="col-md-6">
-              <h3 class="text-primary text-center" style="cursor: pointer;">Welcome {{ userInfo?.userDetails }}</h3>
+              <h6 class="text-primary text-center" style="cursor: pointer;">Welcome {{ userInfo?.userDetails }}</h6>
             </div>
             <div class="col-md-6 text-right">
               <button v-on:click="navigateToLoginPage()" class="btn btn-md btn-primary">

@@ -24,6 +24,7 @@
       <thead>
         <tr>
           <th scope="col">#</th>
+          <th scope="col">ID</th>
           <th scope="col">Name</th>
           <th scope="col">Description</th>
           <th scope="col">Actions</th>
@@ -31,6 +32,9 @@
       </thead>
       <tbody>
         <tr v-for="(object, index) in equipments" :key="index">
+          <td>
+            {{ index + 1 }}
+          </td>
           <td>
             {{ object.equipmentId }}
           </td>

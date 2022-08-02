@@ -1,19 +1,27 @@
 <template>
   <div id="app" class="bg-light">
-  <navbar></navbar>
-  <router-view></router-view>
+      <navbar v-show="propUserInfo" @update-mutableUserInfo-selected="onUpdateMutableUserInfoSelected"></navbar>
+    <router-view></router-view>
   </div>
 </template>
 <script>
 import navbar from './views/nav-bar.vue';
 export default {
   name: "App",
-  components:{
+  components: {
     navbar,
   },
-    methods: {
+  data() {
+    return {
+      propUserInfo: null,
+    }
+  },
+  methods: {
     navigateToHomePage() {
-        this.$router.push('/home');
+      this.$router.push('/home');
+    },
+    onUpdateMutableUserInfoSelected(e) {
+      this.propUserInfo = e;
     }
   }
 };
